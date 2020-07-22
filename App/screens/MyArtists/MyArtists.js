@@ -8,7 +8,7 @@ export function MyArtists({navigation}) {
 
     return (
         <View >
-            <Text >My Artists 1 </Text>
+            <Text >My Artists,,,.,.,.,.,., 1 </Text>
         </View>
     )
 }
@@ -17,7 +17,7 @@ export function MyArtists2({navigation}) {
 
     return (
         <View >
-            <Text >My Artists 2 </Text>
+            <Text >My Artists.,.,.,...... 2 </Text>
         </View>
     )
 }

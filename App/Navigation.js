@@ -12,7 +12,7 @@ import {
   Search2,
   Splash
 } from "./Screens";
-// import Ionicons from 'react-native-vector-icons/Ionicons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import {MyArtists, MyArtists2}  from './screens/MyArtists/MyArtists'
 import {AllArtists, AllArtists2}  from './screens/AllArtists/AllArtists'
 import {MyEvents, MyEvents2}  from './screens/MyEvents/MyEvents'
@@ -97,7 +97,19 @@ const AllEventsStackScreen = () => (
 );
 
 const ArtistsTabsScreen = () => (
-  <Tabs.Navigator initialRouteName="All Artists">
+  <Tabs.Navigator 
+    initialRouteName="All Artists"
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    }}
+  
+  >
     <Tabs.Screen name="All Artists" component={AllArtistsStackScreen} />
     <Tabs.Screen name="My Artists" component={MyArtistsStackScreen} />
   </Tabs.Navigator>
@@ -105,27 +117,28 @@ const ArtistsTabsScreen = () => (
 
 const EventsTabsScreen = () => (
   <Tabs.Navigator 
+      // headerMode="none"
       initialRouteName="All Events"
-      // screenOptions={({ route }) => ({
-      //   tabBarIcon: ({ focused, color, size }) => {
-      //     let iconName;
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ focused, color, size }) => {
+          let iconName;
 
-      //     if (route.name === "All Events") {
-      //       iconName = focused
-      //         ? 'ios-information-circle'
-      //         : 'ios-information-circle-outline';
-      //     } else if (route.name === 'My Events') {
-      //       iconName = focused ? 'ios-list-box' : 'ios-list';
-      //     }
+          if (route.name === "All Events") {
+            iconName = focused
+              ? 'ios-information-circle'
+              : 'ios-information-circle-outline';
+          } else if (route.name === 'My Events') {
+            iconName = focused ? 'ios-list-box' : 'ios-list';
+          }
 
-      //     // You can return any component that you like here!
-      //     return <Ionicons name={iconName} size={size} color={color} />;
-      //   },
-      // })}
-      // tabBarOptions={{
-      //   activeTintColor: 'tomato',
-      //   inactiveTintColor: 'gray',
-      // }}
+          // You can return any component that you like here!
+          return <Ionicons name={iconName} size={size} color={color} />;
+        },
+      })}
+      tabBarOptions={{
+        activeTintColor: 'tomato',
+        inactiveTintColor: 'gray',
+      }}
     >
     <Tabs.Screen name="All Events" component={AllEventsStackScreen} />
     <Tabs.Screen name="My Events" component={MyEventsStackScreen} />
@@ -136,8 +149,8 @@ const myIcon = () => {return (<Icon name="rocket" size={30} color="#900" />)} ;
 
 const Drawer = createDrawerNavigator();
 const DrawerScreen = () => (
-  <Drawer.Navigator         
-    screenOptions={({ navigation }) => ({ 
+  <Drawer.Navigator     
+    screenOptions={({ navigation, route }) => ({ 
       headerRight: () => 
           <TouchableOpacity 
             onPress={() => {
@@ -153,8 +166,8 @@ const DrawerScreen = () => (
 
       initialRouteName="Artists"
   >
-    <Drawer.Screen name="Events" component={EventsTabsScreen} />
-    <Drawer.Screen name="Artists" component={ArtistsTabsScreen} />
+    <Drawer.Screen name="Events" component={EventsTabsScreen} options={{ title: 'Events' }}/>
+    <Drawer.Screen name="Artists" component={ArtistsTabsScreen} options={{ title: 'Artists' }}/>
   </Drawer.Navigator>
 );
 
@@ -165,7 +178,7 @@ export const RootStackScreen = () =>
   const [{user}, dispatch] = getState();
   return (
     <RootStack.Navigator 
-        // headerMode="none"
+        // headerMode="none"  This doesnt get what I want.
 
         screenOptions={({ navigation }) => ({ 
           headerRight: () => 
@@ -181,28 +194,10 @@ export const RootStackScreen = () =>
               </TouchableOpacity>,
           headerLeftContainerStyle: { paddingLeft: 10 } }
         )}
-      // screenOptions={{
-      //   headerTitle: props => <LogoTitle {...props} />,
-      //   headerRight: () => (
-      //     <Button
-      //       onPress={() => alert('This is a button!')}
-      //       title="Info"
-      //       color="#fff"
-      //     />
-      //   ),
-      //   headerStyle: {
-      //     backgroundColor: '#f4511e',
-      //   },
-      //   headerTintColor: '#fff',
-      //   headerTitleStyle: {
-      //     fontWeight: 'bold',
-      //   },
-      // }}
-
     >
       {user.id ? (
         <RootStack.Screen
-          name="DrawerScreen"
+          name="Local Events"
           component={DrawerScreen}
           options={{
             animationEnabled: false
@@ -210,7 +205,7 @@ export const RootStackScreen = () =>
         />
       ) : (
         <RootStack.Screen
-          name="LoginStackScreen"
+          name="Local Events"
           component={LoginStackScreen}
           options={{
             animationEnabled: false

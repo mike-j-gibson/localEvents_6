@@ -10,7 +10,7 @@ export function AllArtists({navigation}) {
     return (
         <View >
             
-                    <Text >All Artists 1</Text>
+                    <Text >All Artists----------------1</Text>
                     <Button
                     onPress={() => navigation.openD}
                     title="Info"
