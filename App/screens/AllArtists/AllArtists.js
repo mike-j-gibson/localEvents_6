@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
-import { Button,Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Button,Image, Text, TextInput, TouchableOpacity } from 'react-native'
 // import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import styles from './styles';
 // import { firebase } from '../../firebase/config'
 // import { getState } from './reactHooks/state';
+import {ScreenContainer} from '../parts/ScreenContainer'
 
 export function AllArtists({navigation}) {
 
     return (
-        <View >
+        <ScreenContainer >
             
                     <Text >All Artists----------------1</Text>
                     <Button
@@ -17,16 +18,16 @@ export function AllArtists({navigation}) {
                     color="#fff"
                   />
 
-        </View>
+        </ScreenContainer>
     )
 }
 
 export function AllArtists2({navigation}) {
 
     return (
-        <View >
+        <ScreenContainer >
             
                     <Text >All Artists 2</Text>
-        </View>
+        </ScreenContainer>
     )
 }

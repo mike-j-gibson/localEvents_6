@@ -6,7 +6,6 @@ import {Navigation} from './App/Navigation'
 import React, { useEffect, useState } from 'react'
 import timerSvc from './App/services/timer-svc'
 import { firebase } from './App/firebase/config'
-import {AllArtistsNoNav}  from './App/screens/AllArtistsNoNav/AllArtists'
 
 //------REACT HOOKS for State
 import { initialState } from './App/reactHooks/initialState';
@@ -50,7 +49,6 @@ export default function App() {
   }
 
   return (
-    // <AllArtistsNoNav/>
     <StateProvider >
       {/* <Provider store={store}> */}
         <Navigation/>

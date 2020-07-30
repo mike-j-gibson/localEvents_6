@@ -6,6 +6,12 @@ import { DrawerLayoutAndroidComponent } from "react-native";
 export const initialState = {
   user: {valid: false},
   drawerOpen: false,
+  myLocations: [],
+  allLocations:[],
+  myArtists: [],
+  allArtists: [],
+  myEvents: [],
+  allEvents: []
 };
 
 

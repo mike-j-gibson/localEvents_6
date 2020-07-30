@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
-import { Image, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Image, Text, TextInput, TouchableOpacity} from 'react-native'
 // import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 // import styles from './styles';
 // import { firebase } from '../../firebase/config'
+import {ScreenContainer} from '../parts/ScreenContainer'
 
 export function MyEvents({navigation}) {
 
     return (
-        <View >
+        <ScreenContainer >
                     <Text >My Events ......... 1 </Text>
-        </View>
+        </ScreenContainer>
     )
 }
 
@@ -17,9 +18,9 @@ export function MyEvents({navigation}) {
 export function MyEvents2({navigation}) {
 
     return (
-        <View >
+        <ScreenContainer >
                     <Text >My Events ......... 2 </Text>
-        </View>
+        </ScreenContainer>
     )
 }
 
